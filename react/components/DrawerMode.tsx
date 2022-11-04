@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Drawer, BackdropMode } from 'vtex.store-drawer'
+import { Drawer, BackdropMode, RenderingStrategy } from 'vtex.store-drawer'
 import { ResponsiveValuesTypes } from 'vtex.responsive-values'
 import { PixelEventTypes } from 'vtex.pixel-manager'
 
@@ -17,6 +17,7 @@ interface Props {
   quantityDisplay: QuantityDisplayType
   itemCountMode: MinicartTotalItemsType
   backdropMode?: ResponsiveValuesTypes.ResponsiveValue<BackdropMode>
+  renderingStrategy?: RenderingStrategy
   customPixelEventId?: string
   customPixelEventName?: PixelEventTypes.EventName
 }
@@ -29,6 +30,7 @@ const DrawerMode: FC<Props> = ({
   itemCountMode,
   drawerSlideDirection,
   backdropMode = 'visible',
+  renderingStrategy = 'lazy',
   customPixelEventId,
   customPixelEventName,
 }) => {
@@ -38,6 +40,7 @@ const DrawerMode: FC<Props> = ({
     <Drawer
       maxWidth={maxDrawerWidth}
       backdropMode={backdropMode}
+      renderingStrategy={renderingStrategy}
       slideDirection={drawerSlideDirection}
       customPixelEventId={customPixelEventId}
       customPixelEventName={customPixelEventName}
